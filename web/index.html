@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chip's Challenge</title>
+<meta name="description" content="Chip's Challenge (Windows 1992 rules) rebuilt for the browser. Free levels built in, or load your own CHIPS.DAT and CHIPS.EXE.">
+<link rel="icon" href="assets/icon.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="win" class="win">
+  <div class="titlebar">
+    <span class="sysbox" aria-hidden="true">&#8212;</span>
+    <span class="title" id="wintitle">Chip's Challenge</span>
+  </div>
+  <nav class="menubar" id="menubar">
+    <div class="menu"><button class="mtop" data-menu="game">Game</button>
+      <div class="drop" id="menu-game">
+        <button data-act="newgame">New Game</button>
+        <button data-act="pause"><span>Pause</span><kbd>P</kbd></button>
+        <button data-act="besttimes">Best Times</button>
+        <hr>
+        <button data-act="files">Load Your Game Files&#8230;</button>
+        <button data-act="forget">Forget Saved Files</button>
+      </div>
+    </div>
+    <div class="menu"><button class="mtop" data-menu="options">Options</button>
+      <div class="drop" id="menu-options">
+        <button data-act="music"><span class="check" id="chk-music"></span>Background Music</button>
+        <button data-act="sound"><span class="check" id="chk-sound"></span>Sound Effects</button>
+        <button data-act="dpad"><span class="check" id="chk-dpad"></span>On Screen Arrows</button>
+        <hr>
+        <button data-act="set-original" id="opt-original"><span class="check" id="chk-original"></span>Original Levels (your CHIPS.DAT)</button>
+        <button data-act="set-cclp1"><span class="check" id="chk-cclp1"></span>CCLP1 (free, built in)</button>
+      </div>
+    </div>
+    <div class="menu"><button class="mtop" data-menu="level">Level</button>
+      <div class="drop" id="menu-level">
+        <button data-act="restart"><span>Restart</span><kbd>Ctrl R</kbd></button>
+        <button data-act="next"><span>Next</span><kbd>Ctrl N</kbd></button>
+        <button data-act="prev"><span>Previous</span><kbd>Ctrl P</kbd></button>
+        <button data-act="goto"><span>Go To&#8230;</span><kbd>Ctrl G</kbd></button>
+      </div>
+    </div>
+    <div class="menu"><button class="mtop" data-menu="help">Help</button>
+      <div class="drop" id="menu-help">
+        <button data-act="howto">How To Play</button>
+        <button data-act="about">About</button>
+      </div>
+    </div>
+  </nav>
+  <div class="stage" id="stage">
+    <canvas id="screen" width="512" height="336" aria-label="Game board"></canvas>
+    <div class="overlay hidden" id="overlay"><div class="dialog" id="dialog"></div></div>
+  </div>
+  <div class="dpad hidden" id="dpad" aria-hidden="true">
+    <button data-dir="0" class="up">&#9650;</button>
+    <button data-dir="1" class="left">&#9664;</button>
+    <button data-dir="3" class="right">&#9654;</button>
+    <button data-dir="2" class="down">&#9660;</button>
+  </div>
+  <div class="statusbar" id="statusbar">Arrow keys or WASD to move.</div>
+</div>
+<input type="file" id="filepick" multiple accept=".zip,.dat,.ccl,.exe,.wav,.mid,.DAT,.EXE,.WAV,.MID" hidden>
+<div class="dropzone hidden" id="dropzone">Drop CHIPS.DAT, CHIPS.EXE, the sounds, or the whole zip</div>
+<script src="js/formats.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/midi.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

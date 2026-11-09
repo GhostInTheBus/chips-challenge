@@ -1,0 +1,24 @@
+# build output
+build/
+*.app
+*.dmg
+
+# never commit original game data
+*.DAT
+*.dat
+!web/levels/CCLP1.dat
+*.EXE
+*.exe
+*.WAV
+*.wav
+*.MID
+*.mid
+*.HLP
+*.DLL
+*.zip
+_local_test*
+
+# misc
+.DS_Store
+node_modules/
+__pycache__/

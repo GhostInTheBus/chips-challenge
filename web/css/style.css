@@ -1,0 +1,67 @@
+/* Windows 3.1 flavored frame around a pixel exact canvas. */
+:root {
+  --face: #c0c0c0; --shadow: #808080; --hi: #ffffff; --dark: #000000;
+  --title: #000080; --title-text: #ffffff; --desk: #008080;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body {
+  background: var(--desk);
+  font: 13px/1.35 "MS Sans Serif", "Microsoft Sans Serif", Tahoma, Geneva, Verdana, sans-serif;
+  display: flex; align-items: flex-start; justify-content: center;
+  padding: 16px 8px 32px;
+  -webkit-user-select: none; user-select: none;
+  touch-action: manipulation;
+}
+.win {
+  background: var(--face);
+  border: 2px solid; border-color: var(--hi) var(--dark) var(--dark) var(--hi);
+  box-shadow: inset -1px -1px var(--shadow), inset 1px 1px #dfdfdf;
+  padding: 3px; width: min(100%, 1060px);
+}
+.titlebar { background: var(--title); color: var(--title-text); display: flex; align-items: center; height: 22px; font-weight: bold; }
+.titlebar .title { flex: 1; text-align: center; }
+.sysbox { width: 20px; height: 18px; margin: 2px; background: var(--face); color: #000; display: inline-flex; align-items: center; justify-content: center; border: 1px solid; border-color: var(--hi) var(--dark) var(--dark) var(--hi); font-weight: bold; }
+.menubar { display: flex; gap: 2px; padding: 2px 2px 3px; position: relative; z-index: 5; }
+.menu { position: relative; }
+.mtop { background: none; border: 0; padding: 2px 8px; font: inherit; cursor: pointer; color: #000; }
+.mtop:hover, .menu.open .mtop { background: var(--title); color: #fff; }
+.drop { display: none; position: absolute; left: 0; top: 100%; min-width: 250px; background: var(--face); border: 2px solid; border-color: var(--hi) var(--dark) var(--dark) var(--hi); padding: 2px; box-shadow: 2px 2px 0 rgba(0,0,0,.35); }
+.menu.open .drop { display: block; }
+.drop button { display: flex; width: 100%; text-align: left; background: none; border: 0; padding: 4px 10px 4px 6px; font: inherit; cursor: pointer; align-items: center; color: #000; }
+.drop button span:first-child { flex: 1; }
+.drop button:hover { background: var(--title); color: #fff; }
+.drop button:disabled { color: var(--shadow); cursor: default; background: none; }
+.drop hr { border: 0; border-top: 1px solid var(--shadow); border-bottom: 1px solid var(--hi); margin: 3px 2px; }
+.drop kbd { font: inherit; opacity: .8; margin-left: 16px; }
+.check { width: 16px; display: inline-block; flex: 0 0 16px !important; }
+.check.on::before { content: "\2713"; }
+.stage { position: relative; background: #000; border: 2px solid; border-color: var(--shadow) var(--hi) var(--hi) var(--shadow); line-height: 0; }
+#screen { width: 100%; height: auto; image-rendering: pixelated; image-rendering: crisp-edges; display: block; }
+.statusbar { margin-top: 3px; padding: 2px 6px; border: 1px solid; border-color: var(--shadow) var(--hi) var(--hi) var(--shadow); min-height: 20px; }
+.overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,.25); line-height: 1.35; }
+.overlay.hidden, .hidden { display: none !important; }
+.dialog { background: var(--face); border: 2px solid; border-color: var(--hi) var(--dark) var(--dark) var(--hi); min-width: 280px; max-width: 92%; box-shadow: 3px 3px 0 rgba(0,0,0,.4); }
+.dialog h2 { margin: 0; background: var(--title); color: #fff; font-size: 13px; padding: 3px 6px; }
+.dialog .body { padding: 14px 16px 10px; }
+.dialog p { margin: 0 0 8px; }
+.dialog .buttons { display: flex; gap: 8px; justify-content: center; padding: 4px 12px 12px; flex-wrap: wrap; }
+.btn { background: var(--face); border: 2px solid; border-color: var(--hi) var(--dark) var(--dark) var(--hi); padding: 4px 16px; font: inherit; min-width: 80px; cursor: pointer; color: #000; }
+.btn:active { border-color: var(--dark) var(--hi) var(--hi) var(--dark); }
+.btn.default { outline: 1px solid #000; }
+.field { display: grid; grid-template-columns: auto 1fr; gap: 6px 10px; align-items: center; }
+.field input { font: inherit; padding: 3px 4px; border: 2px solid; border-color: var(--shadow) var(--hi) var(--hi) var(--shadow); text-transform: uppercase; }
+.err { color: #a00000; min-height: 1.3em; }
+table.times { border-collapse: collapse; width: 100%; font-size: 12px; }
+table.times td, table.times th { padding: 1px 6px; text-align: left; }
+.scroll { max-height: 50vh; overflow: auto; }
+.dpad { display: grid; grid-template-columns: repeat(3, 64px); grid-template-rows: repeat(3, 56px); gap: 4px; justify-content: center; padding: 8px 0 4px; }
+.dpad button { font-size: 22px; background: var(--face); border: 2px solid; border-color: var(--hi) var(--dark) var(--dark) var(--hi); touch-action: none; color: #000; }
+.dpad button:active, .dpad button.down-now { border-color: var(--dark) var(--hi) var(--hi) var(--dark); }
+.dpad .up { grid-column: 2; grid-row: 1; }
+.dpad .left { grid-column: 1; grid-row: 2; }
+.dpad .right { grid-column: 3; grid-row: 2; }
+.dpad .down { grid-column: 2; grid-row: 3; }
+.dropzone { position: fixed; inset: 12px; border: 4px dashed #fff; background: rgba(0,0,128,.6); color: #fff; font-size: 22px; display: flex; align-items: center; justify-content: center; z-index: 50; pointer-events: none; text-align: center; padding: 20px; }
+.small { font-size: 12px; color: #333; }
+a { color: #000080; }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>CFBundleName</key><string>Chip's Challenge</string>
+  <key>CFBundleDisplayName</key><string>Chip's Challenge</string>
+  <key>CFBundleIdentifier</key><string>io.github.ghostinthebus.chipschallenge</string>
+  <key>CFBundleExecutable</key><string>ChipsChallenge</string>
+  <key>CFBundleIconFile</key><string>AppIcon</string>
+  <key>CFBundlePackageType</key><string>APPL</string>
+  <key>CFBundleShortVersionString</key><string>__VERSION__</string>
+  <key>CFBundleVersion</key><string>__VERSION__</string>
+  <key>LSMinimumSystemVersion</key><string>__MIN_OS__</string>
+  <key>LSApplicationCategoryType</key><string>public.app-category.puzzle-games</string>
+  <key>NSHighResolutionCapable</key><true/>
+  <key>NSPrincipalClass</key><string>NSApplication</string>
+  <key>NSHumanReadableCopyright</key><string>Code MIT, GhostInTheBus. Chip's Challenge created by Chuck Sommerville.</string>
+</dict>
+</plist>
